@@ -66,15 +66,17 @@ class _QuestionsState extends State<Questions> {
             AnimatedCrossFade(
               duration: const Duration(microseconds: 1),
               firstChild: const SizedBox.shrink(),
-              secondChild: Container(
-                margin: const EdgeInsets.fromLTRB(16, 5, 16, 0),
-                decoration: customBoxDecoration(
-                  Color(0xFFFAFAFA),
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    child: Text(questions[index].answer),
+              secondChild: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(16, 5, 16, 0),
+                  decoration: customBoxDecoration(lightGray),
+                  child: Center(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: Text(questions[index].answer),
+                    ),
                   ),
                 ),
               ),

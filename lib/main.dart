@@ -81,11 +81,15 @@ class _MyAppState extends State<MyApp> {
                 padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
                 child: Container(
                   height: 100,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFFAFAFA),
-                  ),
+                  decoration: customBoxDecoration(lightGray),
                   child: Center(
-                    child: Text('Oleksandr Bihnyak - $whatYearNow'),
+                    child: Text(
+                      'Oleksandr Bihnyak - $whatYearNow',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ),
               ),

@@ -11,6 +11,7 @@ Color mainBlue = Color(0xFF90CAF9);
 Color mainNightBlue = Color(0xFF2A344B);
 Color mainBlack = Color(0xFF212121);
 Color mainGray = Color(0xFF9E9E9E);
+Color lightGray = Color(0xFFFAFAFA);
 
 Color mainColor = isDay ? mainBlue : mainNightBlue;
 
