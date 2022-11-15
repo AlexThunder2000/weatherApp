@@ -18,10 +18,10 @@ class _WeatherWidgetState extends State<WeatherWidget> {
   Widget build(BuildContext context) {
     if (widget.weather == null) {
       return SizedBox.shrink();
-    } else
+    } else {
       return Container(
         margin: const EdgeInsets.fromLTRB(16, 50, 16, 135),
-        decoration: customBoxDecoration(Color.fromARGB(217, 255, 255, 255)),
+        decoration: customBoxDecoration(Color(0xD9FFFFFF)),
         child: Center(
           child: Column(
             children: [
@@ -29,12 +29,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(217, 255, 255, 255),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
-                      ),
-                    ),
+                    decoration: customBoxDecoration(Colors.white),
                     margin: EdgeInsets.all(20),
                     child: Image(
                       height: 100,
@@ -101,11 +96,11 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                   ),
                 ],
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Divider(
                   thickness: 1,
-                  color: Color(0xFFBFDCE8),
+                  color: mainPowderblue,
                 ),
               ),
               IntrinsicHeight(
@@ -135,8 +130,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                           ),
                         ],
                       ),
-                      const VerticalDivider(
-                        color: Color(0xFFBFDCE8),
+                      VerticalDivider(
+                        color: mainPowderblue,
+                        thickness: 1,
                       ),
                       Column(
                         children: [
@@ -167,5 +163,6 @@ class _WeatherWidgetState extends State<WeatherWidget> {
           ),
         ),
       );
+    }
   }
 }

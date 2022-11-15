@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather1/weather_api.dart';
 import 'package:weather1/constants.dart';
-import 'package:dropdown_textfield/dropdown_textfield.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField(this.setCityName, {Key? key}) : super(key: key);
