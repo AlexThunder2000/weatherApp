@@ -10,6 +10,8 @@ class SearchField extends StatefulWidget {
 }
 
 class _SearchFieldState extends State<SearchField> {
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +26,13 @@ class _SearchFieldState extends State<SearchField> {
             height: 24,
             width: 250,
             child: TextField(
+              controller: _controller,
               onSubmitted: (text) async {
-                WeatherData weather = await WeatherDataFromAPI().getData(text);
+                WeatherData weather =
+                    await WeatherDataFromAPI().getData(text.trim());
 
                 widget.setCityName(weather);
+                _controller.clear();
               },
               decoration: InputDecoration(
                 border: const OutlineInputBorder(
