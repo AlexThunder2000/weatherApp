@@ -20,24 +20,23 @@ class _QuestionsState extends State<Questions> {
       itemBuilder: (context, index) {
         return Column(
           children: [
-            TextButton(
-              style: TextButton.styleFrom(
-                splashFactory: NoSplash.splashFactory,
-              ),
-              onPressed: () {
-                setState(() {
-                  questions[index].isAnswerHide
-                      ? questions[index].isAnswerHide = false
-                      : questions[index].isAnswerHide = true;
-                });
-              },
-              child: Container(
-                margin: const EdgeInsets.fromLTRB(16, 20, 16, 0),
-                decoration: customBoxDecoration(
-                  Color(0xFFFAFAFA),
+            Container(
+              margin: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+              decoration: customBoxDecoration(lightGray),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  splashFactory: NoSplash.splashFactory,
                 ),
+                onPressed: () {
+                  setState(() {
+                    questions[index].isAnswerHide
+                        ? questions[index].isAnswerHide = false
+                        : questions[index].isAnswerHide = true;
+                  });
+                },
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: SizedBox(
                     width: double.infinity,
                     child: Row(
@@ -46,13 +45,14 @@ class _QuestionsState extends State<Questions> {
                         Text(
                           questions[index].question,
                           textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black),
                         ),
                         Transform.rotate(
                           angle: questions[index].isAnswerHide
                               ? 270 * pi / 180
                               : 90 * pi / 180,
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back_ios_new_rounded,
                             color: Colors.black,
                           ),
@@ -65,18 +65,16 @@ class _QuestionsState extends State<Questions> {
             ),
             AnimatedCrossFade(
               duration: const Duration(microseconds: 1),
+              reverseDuration: const Duration(),
               firstChild: const SizedBox.shrink(),
-              secondChild: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  margin: const EdgeInsets.fromLTRB(16, 5, 16, 0),
-                  decoration: customBoxDecoration(lightGray),
-                  child: Center(
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                      child: Text(questions[index].answer),
-                    ),
+              secondChild: Container(
+                margin: const EdgeInsets.fromLTRB(16, 5, 16, 0),
+                decoration: customBoxDecoration(lightGray),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
+                    child: Text(questions[index].answer),
                   ),
                 ),
               ),

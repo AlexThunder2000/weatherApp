@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:weather1/popular_city_list.dart';
 import 'package:weather1/weather_api.dart';
 import 'package:weather1/constants.dart';
+import 'package:weather1/main.dart';
 
 class PopularCityCard extends StatefulWidget {
-  const PopularCityCard(this.setCityName, {Key? key}) : super(key: key);
-
+  const PopularCityCard(this.scrollToTop, this.setCityName, {Key? key})
+      : super(key: key);
+  final VoidCallback scrollToTop;
   final Function(WeatherData) setCityName;
+
   @override
   State<PopularCityCard> createState() => _PopularCityCardState();
 }
@@ -31,16 +34,17 @@ class _PopularCityCardState extends State<PopularCityCard> {
               fit: BoxFit.cover,
             ),
           ),
-          child: TextButton(
-            onPressed: () async {
-              WeatherData weather =
-                  await WeatherDataFromAPI().getData(cities[index].popularCity);
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(10, 170, 10, 14),
+            decoration: customBoxDecoration(Colors.white),
+            child: TextButton(
+              onPressed: () async {
+                WeatherData weather = await WeatherDataFromAPI()
+                    .getData(cities[index].popularCity);
 
-              widget.setCityName(weather);
-            },
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(14, 170, 14, 14),
-              decoration: customBoxDecoration(Colors.white),
+                widget.setCityName(weather);
+                widget.scrollToTop();
+              },
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 5, 0, 4),

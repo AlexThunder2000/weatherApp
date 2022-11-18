@@ -17,11 +17,11 @@ class _WeatherWidgetState extends State<WeatherWidget> {
   @override
   Widget build(BuildContext context) {
     if (widget.weather == null) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     } else {
       return Container(
         margin: const EdgeInsets.fromLTRB(16, 50, 16, 135),
-        decoration: customBoxDecoration(Color(0xD9FFFFFF)),
+        decoration: customBoxDecoration(const Color(0xD9FFFFFF)),
         child: Center(
           child: Column(
             children: [
@@ -30,7 +30,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                 children: [
                   Container(
                     decoration: customBoxDecoration(Colors.white),
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     child: Image(
                       height: 100,
                       width: 100,
@@ -45,7 +45,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${widget.weather?.temperature.toInt()}℃',
+                            widget.weather?.temperature > 0
+                                ? '+${widget.weather?.temperature.toInt()}°C'
+                                : '${widget.weather?.temperature.toInt()}°C',
                             style: TextStyle(
                               fontSize: 18,
                               color: mainBlack,
@@ -97,10 +99,10 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Divider(
                   thickness: 1,
-                  color: mainPowderblue,
+                  color: mainPowderBlue,
                 ),
               ),
               IntrinsicHeight(
@@ -122,7 +124,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                             height: 5,
                           ),
                           Text(
-                            '${widget.weather?.temperatureMin.toInt()}℃',
+                            widget.weather?.temperatureMin > 0
+                                ? '+${widget.weather?.temperatureMin.toInt()}°C'
+                                : '${widget.weather?.temperatureMin.toInt()}°C',
                             style: TextStyle(
                               fontSize: 18,
                               color: mainBlack,
@@ -131,7 +135,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                         ],
                       ),
                       VerticalDivider(
-                        color: mainPowderblue,
+                        color: mainPowderBlue,
                         thickness: 1,
                       ),
                       Column(
@@ -147,7 +151,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                             height: 5,
                           ),
                           Text(
-                            '${widget.weather?.temperatureMax.toInt()}℃',
+                            widget.weather?.temperatureMax > 0
+                                ? '+${widget.weather?.temperatureMax.toInt()}°C'
+                                : '${widget.weather?.temperatureMax.toInt()}°C',
                             style: TextStyle(
                               fontSize: 18,
                               color: mainBlack,

@@ -19,6 +19,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   WeatherData? weather;
+  ScrollController scrollController = ScrollController();
+  void _scrollToTop() {
+    setState(() {
+      scrollController.animateTo(0,
+          duration: const Duration(milliseconds: 400), //duration of scroll
+          curve: Curves.fastOutSlowIn //scroll type
+          );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +35,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
+          controller: scrollController,
           child: Column(
             children: [
               Container(
@@ -39,7 +49,7 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   children: [
                     SearchField((WeatherData weatherData) {
-                      if (weatherData != weather && weatherData != null) {
+                      if (weatherData != weather) {
                         setState(() {
                           weather = weatherData;
                         });
@@ -59,8 +69,8 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-              PopularCityCard((WeatherData weatherData) {
-                if (weatherData != weather && weatherData != null) {
+              PopularCityCard(_scrollToTop, (WeatherData weatherData) {
+                if (weatherData != weather) {
                   setState(() {
                     weather = weatherData;
                   });
@@ -85,7 +95,7 @@ class _MyAppState extends State<MyApp> {
                   child: Center(
                     child: Text(
                       'Oleksandr Bihnyak - $whatYearNow',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                       ),
