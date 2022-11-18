@@ -17,12 +17,12 @@ class _SearchFieldState extends State<SearchField> {
     return Container(
       height: 60,
       decoration: customBoxDecoration(Colors.white),
-      margin: EdgeInsets.fromLTRB(16, 135, 16, 50),
+      margin: const EdgeInsets.fromLTRB(16, 135, 16, 50),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(20, 18, 20, 0),
+            margin: const EdgeInsets.fromLTRB(20, 18, 20, 0),
             height: 24,
             width: 250,
             child: TextField(
@@ -48,9 +48,21 @@ class _SearchFieldState extends State<SearchField> {
             width: 40,
             margin: EdgeInsets.all(10),
             decoration: customBoxDecoration(mainColor),
-            child: const Icon(
-              Icons.search,
-              color: Colors.white,
+            child: TextButton(
+              onPressed: () {
+                //print(_controller.text);
+                setState(() async {
+                  WeatherData weather = await WeatherDataFromAPI()
+                      .getData(_controller.text.toString().trim());
+
+                  widget.setCityName(weather);
+                  _controller.clear();
+                });
+              },
+              child: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
             ),
           ),
         ],
