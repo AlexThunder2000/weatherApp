@@ -34,10 +34,11 @@ class _QuestionsState extends State<Questions> {
               child: Container(
                 margin: const EdgeInsets.fromLTRB(16, 20, 16, 0),
                 decoration: customBoxDecoration(
-                  Color(0xFFFAFAFA),
+                  const Color(0xFFFAFAFA),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: SizedBox(
                     width: double.infinity,
                     child: Row(
@@ -46,13 +47,14 @@ class _QuestionsState extends State<Questions> {
                         Text(
                           questions[index].question,
                           textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black),
                         ),
                         Transform.rotate(
                           angle: questions[index].isAnswerHide
                               ? 270 * pi / 180
                               : 90 * pi / 180,
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back_ios_new_rounded,
                             color: Colors.black,
                           ),
@@ -73,8 +75,8 @@ class _QuestionsState extends State<Questions> {
                   decoration: customBoxDecoration(lightGray),
                   child: Center(
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 15),
                       child: Text(questions[index].answer),
                     ),
                   ),

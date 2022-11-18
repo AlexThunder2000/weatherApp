@@ -46,11 +46,10 @@ class _SearchFieldState extends State<SearchField> {
           Container(
             height: 40,
             width: 40,
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             decoration: customBoxDecoration(mainColor),
             child: TextButton(
               onPressed: () {
-                //print(_controller.text);
                 setState(() async {
                   WeatherData weather = await WeatherDataFromAPI()
                       .getData(_controller.text.toString().trim());

@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   children: [
                     SearchField((WeatherData weatherData) {
-                      if (weatherData != weather && weatherData != null) {
+                      if (weatherData != weather) {
                         setState(() {
                           weather = weatherData;
                         });
@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               PopularCityCard((WeatherData weatherData) {
-                if (weatherData != weather && weatherData != null) {
+                if (weatherData != weather) {
                   setState(() {
                     weather = weatherData;
                   });
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                   child: Center(
                     child: Text(
                       'Oleksandr Bihnyak - $whatYearNow',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                       ),
